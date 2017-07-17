@@ -1,6 +1,6 @@
 # my-project
 
-> A Vue.js project
+> VueJS: link Add button to Modal form
 
 ## Build Setup
 

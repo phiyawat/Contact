@@ -1,42 +1,42 @@
 <template>
 
-    <div class="ui modal">
+    <div :id="modalId" class="ui modal">
 
         <div class="header">Contact
             <div class="ui teal horizontal label">{{mode}}</div>
         </div>
 
+        <!-- v-modal can edit contact but old contact not change -->
 
         <div class="content">
             <form class="ui form" v-on:submit.prevent>
                 <div class="field required">
                     <label>Contact ID</label>
-                    <input id="contactId" type="text" v-model="contact" placeholder="Contact ID">
-                    <p> My message form v-model is : {{contact}} </p>
+                    <input id="contactId" type="text" v-model="contact.id" placeholder="Contact ID">
                 </div>
                 <div class="field required">
                     <label>First Name</label>
-                    <input id="firstName" type="text" placeholder="First Name">
+                    <input id="firstName" type="text" v-model="contact.firstName" placeholder="First Name">
                 </div>
                 <div class="field required">
                     <label>Last Name</label>
-                    <input id="lastName" type="text" placeholder="Last Name">
+                    <input id="lastName" type="text" v-model="contact.lastName" placeholder="Last Name">
                 </div>
                 <div class="field required">
                     <label>Mobile No</label>
-                    <input id="mobileNo" type="text" placeholder="Mobile No">
+                    <input id="mobileNo" type="text" v-model="contact.mobileNo" placeholder="Mobile No">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input id="email" type="email" placeholder="Email">
+                    <input id="email" type="email" v-model="contact.email" placeholder="Email">
                 </div>
                 <div class="field">
                     <label>Facebook</label>
-                    <input id="facebook" type="text" placeholder="Facebook">
+                    <input id="facebook" type="text" v-model="contact.facebook" placeholder="Facebook">
                 </div>
                 <div class="field">
                     <label>Image Url</label>
-                    <input id="imageUrl" type="text" placeholder="Image Url">
+                    <input id="imageUrl" type="text" v-model="contact.imageUrl" placeholder="Image Url">
                 </div>
                 <div class="ui buttons center aligned container">
                     <button class="ui primary basic button" @click="onSaveClicked">
@@ -53,9 +53,16 @@
 
 <script> 
 import $ from 'jquery' 
-export default { 
+export default {
 
     props: ['modalId', 'mode', 'contact'], 
+
+    data (){
+      return {
+          id: []
+      }
+    },
+    
     methods: {   
         onSaveClicked (e) {     
             this.$emit('onSaveClicked')   

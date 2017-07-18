@@ -13,7 +13,7 @@ import Contact from '@/page/Contact'
 import Semantic from '../node_modules/semantic-ui-css'
 
 export default {  
-  components: { MenuBar,Semantic,Contact } 
+  components: { Semantic,MenuBar,Contact } 
 } 
 </script>
 
@@ -25,6 +25,5 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
 </style>

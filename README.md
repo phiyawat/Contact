@@ -2,7 +2,7 @@
 
 > VueJS: 
 + link Add button to Modal form 
-+ link Edit button to Modal form <you can edit contact but old contact not change> 
++ link Edit button to Modal form  (you can edit contact but old contact not change) 
 
 ## Build Setup
 

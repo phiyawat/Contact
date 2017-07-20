@@ -1,5 +1,4 @@
 <template>
-
     <div :id="modalId" class="ui modal">
 
         <div class="header">Contact
@@ -57,11 +56,6 @@ export default {
 
     props: ['modalId', 'mode', 'contact'], 
 
-    data (){
-      return {
-          id: []
-      }
-    },
     
     methods: {   
         onSaveClicked (e) {     

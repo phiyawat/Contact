@@ -5,6 +5,12 @@
 + link Edit button to Modal form  (you can edit contact but old contact not change) 
 + link Delete button
 
+> MongoDB
++ insert data to MongoDB <if you save success>
+
+> Express and Nodejs
++ create web API
+
 ## Build Setup
 
 ``` bash

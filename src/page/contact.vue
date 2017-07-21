@@ -6,7 +6,7 @@
         <SearchPanel @onClickedAdd="openContactEditor('Add')"></SearchPanel>
         <DataPager></DataPager>
         <div class="ui center aligned segment">
-            <CardList :items="items" @onEditClicked="onEditClicked" @onRemoveClicked="onRemoveClicked"></CardList>
+            <CardList remove="cardList" :items="items" @onEditClicked="onEditClicked" @onRemoveClicked="onRemoveClicked"></CardList>
         </div>
         <ContactEditor modalId="contactModal" :contact="contact" :mode="mode" @onSaveClicked="validateContact"></ContactEditor>
         <ConfirmModal id="confirmModal" header="Deleting" :message="msgDelete" @onOKClicked="onOKClicked"></ConfirmModal>
@@ -21,8 +21,8 @@ import CardItem from '@/components/CardItem'
 import ContactsStore from '@/store/Contacts'
 import ContactsApi from '@/api/Contact'
 import ContactEditor from '@/components/ContactEditor'
-
 import ConfirmModal from '@/components/ConfirmModal'
+import $ from 'jquery'
 
 export default { 
     
@@ -112,14 +112,16 @@ export default {
          
           addContact () {  
               console.log("addContact 1") 
-              //console.log(this.contact)   
-              ContactsApi.add(this.contact)  
+              //console.log(this.contact)  
+
+              ContactsApi.add(this.contact)
               
-              .then((result) => {      
+              .then((result) => { 
+
                   if (result.status === 200 && result.data.ok === 1) {     
                       console.log("success")    
-                      this.showMessage('Insert', 'Success')  
-                      this.getContact({condition: {}})     
+                     // this.showMessage('Insert', 'Success')  
+                     // this.getContact({condition: {}})     
                     } 
                     else { 
                         console.log("fail")        
@@ -139,7 +141,7 @@ export default {
                 'criteria': {'_id': this.contact['_id']}, 
                 'data': {'$set': data}}     
                 ContactsApi.update(condition)     
-                .then((result) => {       
+                .then((result) => {      
                     if (result.status === 200 && result.data.ok === 1) {         
                         this.showMessage('Update', 'Success')         
                         this.getContact({condition: {}})         
@@ -171,7 +173,6 @@ export default {
         },
 
         onRemoveClicked (item) {
-              
             console.log("remove")   
             this.contact = item     
             this.msgDelete = `Are you sure to delete contact of ${this.contact.firstName + ' ' + this.contact.lastName} [y/n] ?`     
@@ -211,7 +212,8 @@ export default {
 
             onOKClicked () {     
                 var condition = { 'id': this.contact.id}     
-                $('#confirmModal' ).modal('hide')    
+                $('#confirmModal' ).modal('hide')
+
                 ContactsApi.remove(condition)
                      
                 .then((result) => {       

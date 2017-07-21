@@ -28,7 +28,7 @@
 <script> 
 export default { 
 
-    props: ['item'],
+    props: ['item','remove'],
      
     methods: {   
         changeItem () {     
